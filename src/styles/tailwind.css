@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+@layer base {
+  :root {
+    --navy: #0D1B3E;
+    --navy-mid: #112255;
+    --navy-light: #1A3068;
+    --navy-deep: #080F24;
+    --orange: #F05A00;
+    --orange-light: #FF7A2F;
+    --orange-dark: #C44A00;
+    --gold: #D4AF37;
+    --gold-light: #F0D060;
+    --gold-dark: #B8960C;
+    --slate: #64748B;
+    --slate-light: #94A3B8;
+    --surface: rgba(255,255,255,0.05);
+    --surface-hover: rgba(255,255,255,0.08);
+    --border-glass: rgba(255,255,255,0.12);
+    --text-primary: #F8FAFC;
+    --text-muted: #94A3B8;
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html[lang="ar"] body,
+  html[dir="rtl"] body {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+    direction: rtl;
+  }
+
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] h4,
+  html[lang="ar"] h5,
+  html[lang="ar"] h6,
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4,
+  html[dir="rtl"] h5,
+  html[dir="rtl"] h6 {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--navy);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .font-arabic {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+  }
+
+  .font-mono-data {
+    font-family: 'DM Mono', monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .glass-gold {
+    background: rgba(212, 175, 55, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+  }
+
+  .glass-dark {
+    background: rgba(8, 15, 36, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, #D4AF37 0%, #F0D060 50%, #B8960C 100%);
+  }
+
+  .orange-gradient {
+    background: linear-gradient(135deg, #F05A00 0%, #FF7A2F 50%, #C44A00 100%);
+  }
+
+  .gold-text {
+    background: linear-gradient(135deg, #D4AF37 0%, #F0D060 60%, #D4AF37 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .orange-text {
+    background: linear-gradient(135deg, #F05A00 0%, #FF7A2F 60%, #F05A00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .navy-gradient {
+    background: linear-gradient(135deg, #0D1B3E 0%, #112255 50%, #0D1B3E 100%);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 0 40px rgba(212, 175, 55, 0.1);
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 20px rgba(240, 90, 0, 0.4), 0 0 40px rgba(240, 90, 0, 0.15);
+  }
+
+  .glow-gold-text {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(17, 34, 85, 0.5), 0 0 40px rgba(17, 34, 85, 0.2);
+  }
+
+  .card-hover {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  }
+
+  /* White card style for services/features */
+  .service-card {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-gold {
+    animation: pulseGold 2s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite alternate;
+  }
+
+  .animate-counter {
+    animation: countUp 1s ease-out forwards;
+  }
+
+  .swipe-card {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: grab;
+  }
+
+  .swipe-card:active {
+    cursor: grabbing;
+  }
+
+  .skill-bar {
+    transition: width 1s ease-out;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulseGold {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(212, 175, 55, 0.2); }
+  to { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 0 60px rgba(212, 175, 55, 0.2); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes drawLine {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in-scale {
+  animation: fadeInScale 0.4s ease-out forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
