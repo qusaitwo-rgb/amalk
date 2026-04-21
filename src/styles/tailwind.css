@@ -252,6 +252,41 @@
   animation: fadeInScale 0.4s ease-out forwards;
 }
 
+/* ── Input / Textarea / Select visibility fix ── */
+input,
+textarea,
+select {
+  color: #F8FAFC;
+  caret-color: #F8FAFC;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(148, 163, 184, 0.6);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  color: #F8FAFC;
+}
+
+select option {
+  background-color: #0D1B3E;
+  color: #F8FAFC;
+}
+
+/* ── Welcome overlay animation ── */
+@keyframes welcomeFadeOut {
+  0%   { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.welcome-overlay {
+  animation: welcomeFadeOut 2s ease-in-out forwards;
+}
+
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
