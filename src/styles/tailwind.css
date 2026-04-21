@@ -252,28 +252,33 @@
   animation: fadeInScale 0.4s ease-out forwards;
 }
 
-/* ── Input / Textarea / Select visibility fix ── */
+/* ── Global Input / Form Field Styles ── */
 input,
 textarea,
 select {
-  color: #F8FAFC;
-  caret-color: #F8FAFC;
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  caret-color: #000000 !important;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: rgba(148, 163, 184, 0.6);
+  color: #666666 !important;
+  opacity: 1 !important;
+}
+
+select option {
+  background-color: #FFFFFF;
+  color: #000000;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  color: #F8FAFC;
-}
-
-select option {
-  background-color: #0D1B3E;
-  color: #F8FAFC;
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  caret-color: #000000 !important;
+  outline-color: #D4AF37;
 }
 
 /* ── Welcome overlay animation ── */
