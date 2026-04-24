@@ -109,6 +109,7 @@ export default function AuthScreen() {
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [cvParsing, setCvParsing] = useState(false);
   const [cvSkills, setCvSkills] = useState<string[]>([]);
+  const [welcomeMsg, setWelcomeMsg] = useState<string | null>(null);
   const cvInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
   const { lang, setLang, isRTL, setUserSession } = useLanguage();
@@ -137,6 +138,12 @@ export default function AuthScreen() {
     );
   };
 
+  const getRoleDashboard = (r: UserRole): string => {
+    if (r === 'company') return '/company-dashboard';
+    if (r === 'admin') return '/admin-dashboard';
+    return '/talent-dashboard';
+  };
+
   const handleLogin = async (data: LoginForm) => {
     setIsLoading(true);
     await new Promise((r) => setTimeout(r, 1200));
@@ -163,10 +170,15 @@ export default function AuthScreen() {
     };
     setUserSession(session);
 
-    toast.success(lang === 'ar' ? `مرحباً بعودتك ${validCred.fullName}!` : `Welcome back, ${validCred.fullName}!`);
+    const welcomeText = lang === 'ar'
+      ? `مرحباً بعودتك، ${validCred.fullName}!`
+      : `Welcome back, ${validCred.fullName}!`;
+    setWelcomeMsg(welcomeText);
+    toast.success(welcomeText);
+
     setTimeout(() => {
-      router.push('/talent-dashboard');
-    }, 800);
+      router.push(getRoleDashboard(validCred.role));
+    }, 1800);
     setIsLoading(false);
   };
 
@@ -190,8 +202,13 @@ export default function AuthScreen() {
     };
     setUserSession(session);
 
-    toast.success(lang === 'ar' ? `مرحباً ${data.fullName}! تم إنشاء حسابك.` : `Welcome, ${data.fullName}! Account created.`);
-    setTimeout(() => router.push('/talent-dashboard'), 800);
+    const welcomeText = lang === 'ar'
+      ? `مرحباً ${data.fullName}! تم إنشاء حسابك.`
+      : `Welcome, ${data.fullName}! Account created.`;
+    setWelcomeMsg(welcomeText);
+    toast.success(welcomeText);
+
+    setTimeout(() => router.push(getRoleDashboard(role)), 1800);
     setIsLoading(false);
   };
 
@@ -208,6 +225,29 @@ export default function AuthScreen() {
   return (
     <div className="min-h-screen bg-[#0D1B3E] flex relative overflow-hidden" dir={isRTL ? 'rtl' : 'ltr'}>
       <Toaster position="bottom-right" theme="dark" richColors />
+
+      {/* Welcome overlay */}
+      {welcomeMsg && (
+        <div className="welcome-overlay fixed inset-0 z-50 flex items-center justify-center bg-[#0D1B3E]/95 pointer-events-none">
+          <div className="text-center px-8">
+            <div className="w-16 h-16 rounded-full orange-gradient flex items-center justify-center mx-auto mb-5 glow-orange">
+              <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <h2 className={`text-3xl font-extrabold text-white mb-2 ${isRTL ? 'font-arabic' : 'font-display'}`}>{welcomeMsg}</h2>
+            <p className={`text-white/50 text-sm ${isRTL ? 'font-arabic' : ''}`}>
+              {lang === 'ar' ? 'جارٍ تحميل لوحة التحكم...' : 'Loading your dashboard...'}
+            </p>
+            <div className="mt-5 flex justify-center">
+              <svg className="w-6 h-6 text-[#F05A00] animate-spin" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Background effects */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_50%,rgba(17,34,85,0.6)_0%,transparent_60%)]" />

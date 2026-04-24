@@ -252,6 +252,46 @@
   animation: fadeInScale 0.4s ease-out forwards;
 }
 
+/* ── Global Input / Form Field Styles ── */
+input,
+textarea,
+select {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  caret-color: #000000 !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #666666 !important;
+  opacity: 1 !important;
+}
+
+select option {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+  caret-color: #000000 !important;
+  outline-color: #D4AF37;
+}
+
+/* ── Welcome overlay animation ── */
+@keyframes welcomeFadeOut {
+  0%   { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.welcome-overlay {
+  animation: welcomeFadeOut 2s ease-in-out forwards;
+}
+
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
